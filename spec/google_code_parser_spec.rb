@@ -39,4 +39,10 @@ describe Chromedriver::Helper::GoogleCodeParser do
       end
     end
   end
+
+  describe "#url_for_version" do
+    it "returns the last URL for the platform" do
+      expect(parser.url_for_version("2.3")).to eq "http://chromedriver.storage.googleapis.com/2.3/chromedriver_mac32.zip"
+    end
+  end
 end

@@ -36,7 +36,11 @@ module Chromedriver
     end
 
     def download_url
-      GoogleCodeParser.new(platform).newest_download
+      if ENV["CHROMEDRIVER_VERSION"]
+        GoogleCodeParser.new(platform).url_for_version(ENV["CHROMEDRIVER_VERSION"])
+      else
+        GoogleCodeParser.new(platform).newest_download
+      end
     end
 
     def binary_path
