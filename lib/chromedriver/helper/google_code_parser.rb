@@ -20,6 +20,10 @@ module Chromedriver
         items.map {|k| "#{BUCKET_URL}/#{k}"}
       end
 
+      def url_for_version(version)
+        downloads.find { |d| grab_version_string_from(d) == version }
+      end
+
       def newest_download
         (downloads.sort { |a, b| version_of(a) <=> version_of(b)}).last
       end
